@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "website-scrinner"
+version = "0.1.0"
+description = ""
+authors = ["Georgiy Vasin <georgijvasin01@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.11.5"
+selenium = "^4.25.0"
+pyautogui = "^0.9.54"
+imagehash = "^4.3.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
