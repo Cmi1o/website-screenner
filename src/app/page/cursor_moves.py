@@ -1,5 +1,6 @@
-from typing import Any
 import pyautogui as GU
+
+from typing import Any
 
 from app.page.loading import page_render_delay
 
