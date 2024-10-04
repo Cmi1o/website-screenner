@@ -20,7 +20,7 @@ def main() -> None:
         screens_count = 0
         is_last_photo = False
         
-        prepare_page()
+        prepare_page(driver)
         cursor.accept_cookies(has_taskbar=False)
         cursor.remove_automatic_software_banner()
         cursor.move_to_top()
