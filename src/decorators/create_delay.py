@@ -18,7 +18,7 @@ class create_delay:
         func: Callable[_F_spec, _F_return]
     ) -> Callable[_F_spec, _F_return]:
         @wraps(func)
-        def wrapper(*args, **kwargs):
+        def wrapper(*args, **kwargs) -> _F_return:
             result = func(*args, **kwargs)
             page_render_delay(self.delay)
             return result
