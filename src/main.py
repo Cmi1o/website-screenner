@@ -25,7 +25,7 @@ def main() -> None:
         cursor.remove_automatic_software_banner()
         cursor.move_to_top()
         
-        while screens_count <= constants.max_screens_count and not is_last_photo:
+        while screens_count < constants.max_screens_count and not is_last_photo:
             screens_count += 1
             screens_maker.take_screenshot(serial_number=screens_count)
             
