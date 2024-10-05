@@ -6,5 +6,5 @@ __all__ = (
 )
 
 
-def scroll_down(driver: WebDriver, step: int=505) -> None:
+def scroll_down(driver: WebDriver, step: int=515) -> None:
     driver.execute_script(f'window.scrollBy(0, {step})')
