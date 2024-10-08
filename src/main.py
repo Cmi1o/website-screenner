@@ -14,8 +14,10 @@ from app.screenshots import screens_maker
 
 
 def main() -> None:
+    url = 'https://www.wildberries.ru/seller/1158424'
+    
     with webdriver.Chrome(options) as driver:
-        driver.get('https://www.wildberries.ru/seller/1158424')
+        driver.get(url)
         
         screens_count = 0
         is_last_photo = False
