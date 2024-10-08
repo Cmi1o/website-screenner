@@ -1,4 +1,1 @@
-from typing import Final as const
-
-
-max_screens_count: const = 20
+MAX_SCREENS_COUNT: int = 20
