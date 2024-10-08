@@ -1,9 +1,13 @@
+# IDE
 /.venv
 /.vscode
 
+# Byte-compiled
 __pycache__/
 
+# folder with screens
 assets/*
 
+# todo files
 todo.*
 TODO.*
