@@ -11,7 +11,7 @@ __all__ = (
 def is_next_page_button_found(driver: WebDriver) -> bool:
     try:
         return bool(driver.find_element(
-            By.XPATH, '//*[@id="catalog"]/div[6]/div/a[3]'
+            By.LINK_TEXT, 'Следующая страница'
         ))
     except NoSuchElementException:
         return False
