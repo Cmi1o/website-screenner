@@ -10,7 +10,10 @@ from app.page import (
 )
 from app.page import cursor
 from app.page.loading import prepare_page
+from app.page.screen.buttons import is_next_page_button_found
+from app.page.tabs import open_new_tab
 from app.screenshots import screens_maker
+from get_url import next_page_url
 
 
 def main() -> None:
@@ -19,25 +22,46 @@ def main() -> None:
     with webdriver.Chrome(options) as driver:
         driver.get(url)
         
+        pages_count = 1
         screens_count = 0
         is_last_photo = False
+        has_next_page = True
         
         prepare_page(driver)
         cursor.accept_cookies(has_taskbar=False)
         cursor.remove_automatic_software_banner()
         cursor.move_to_top()
         
-        while screens_count < constants.max_screens_count and not is_last_photo:
-            screens_count += 1
-            screens_maker.take_screenshot(serial_number=screens_count)
+        while has_next_page:
+            while screens_count < constants.MAX_SCREENS_COUNT and not is_last_photo:
+                screens_count += 1
+                screens_maker.take_screenshot(serial_number=screens_count)
+                
+                if not screens_count == 1:
+                    if compare_pngs(screens_count - 1, screens_count) is True:
+                        is_last_photo = True
+                        delete_file(screens_count)
+                
+                scroll_down(driver)
+                page_render_delay(1.5)
             
-            if not screens_count == 1:
-                if compare_pngs(screens_count - 1, screens_count) is True:
-                    is_last_photo = True
-                    delete_file(screens_count)
+            if is_next_page_button_found(driver):
+                pages_count += 1
+                
+                screens_count = 0
+                is_last_photo = False
+                
+                open_new_tab(
+                    url=next_page_url(
+                        base_url=url, 
+                        page_number=pages_count
+                    ),
+                    driver=driver
+                )
+                prepare_page(driver)
             
-            scroll_down(driver)
-            page_render_delay(1.5)
+            else:
+                has_next_page = False
 
 
 if __name__ == '__main__':
