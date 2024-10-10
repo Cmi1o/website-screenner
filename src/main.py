@@ -12,7 +12,7 @@ from app.page import cursor
 from app.page.loading import prepare_page
 from app.page.screen.buttons import is_next_page_button_found
 from app.page.tabs import open_new_tab
-from app.screenshots import screens_maker
+from screenshots import screens_maker
 from get_url import next_page_url
 
 
