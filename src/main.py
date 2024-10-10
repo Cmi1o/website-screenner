@@ -2,7 +2,7 @@ import constants
 
 from selenium import webdriver
 
-from app.files_interactions import compare_pngs, delete_file
+from files_interactions import compare_pngs, delete_file
 from app.driver_builder import options
 from app.page import (
     scroll_down,
