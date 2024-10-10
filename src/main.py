@@ -23,6 +23,7 @@ def main() -> None:
         driver.get(url)
         
         pages_count = 1
+        page_screens_count = 0
         screens_count = 0
         is_last_photo = False
         has_next_page = True
@@ -33,8 +34,10 @@ def main() -> None:
         cursor.move_to_top()
         
         while has_next_page:
-            while screens_count < constants.MAX_SCREENS_COUNT and not is_last_photo:
+            while page_screens_count < constants.MAX_SCREENS_COUNT and not is_last_photo:
+                page_screens_count += 1
                 screens_count += 1
+                
                 screens_maker.take_screenshot(serial_number=screens_count)
                 
                 if not screens_count == 1:
@@ -48,7 +51,7 @@ def main() -> None:
             if is_next_page_button_found(driver):
                 pages_count += 1
                 
-                screens_count = 0
+                page_screens_count = 0
                 is_last_photo = False
                 
                 open_new_tab(
