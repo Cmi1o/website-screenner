@@ -1,6 +1,6 @@
 from typing import NamedTuple
 
-from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.chrome.webdriver import WebDriver
 
 
 class ScreenSizes(NamedTuple):
@@ -8,8 +8,8 @@ class ScreenSizes(NamedTuple):
     height: int
 
 
-def get_screen_size(body: WebElement) -> ScreenSizes:
+def get_screen_size(driver: WebDriver) -> ScreenSizes:
     return ScreenSizes(
-        width=body.size['width'], 
-        height=body.size['height']
+        width=driver.get_window_size()['width'],
+        height=driver.get_window_size()['height']
     )
