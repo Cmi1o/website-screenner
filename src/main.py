@@ -1,6 +1,7 @@
 import constants
 
 from selenium import webdriver
+from selenium.common.exceptions import WebDriverException
 
 from files_interactions import compare_pngs, delete_file
 from app.driver_builder import options
@@ -76,5 +77,6 @@ def main() -> None:
 if __name__ == '__main__':
     try:
         main()
-    except KeyboardInterrupt:
-        print('Ты вручную завершил работу')
+    except (KeyboardInterrupt, WebDriverException) as error:
+        if isinstance(error, WebDriverException):
+            print('Network error')
