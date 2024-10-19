@@ -4,8 +4,8 @@ from typing import Callable, ParamSpec, TypeVar
 from app.page.loading import page_render_delay
 
 
-_F_spec = ParamSpec('_F_spec')
-_F_return = TypeVar('_F_return')
+_S = ParamSpec('_S')
+_R = TypeVar('_R')
 number = int | float
 
 
@@ -15,10 +15,10 @@ class create_delay:
     
     def __call__(
         self, 
-        func: Callable[_F_spec, _F_return]
-    ) -> Callable[_F_spec, _F_return]:
+        func: Callable[_S, _R]
+    ) -> Callable[_S, _R]:
         @wraps(func)
-        def wrapper(*args, **kwargs) -> _F_return:
+        def wrapper(*args, **kwargs) -> _R:
             result = func(*args, **kwargs)
             page_render_delay(self.delay)
             return result
