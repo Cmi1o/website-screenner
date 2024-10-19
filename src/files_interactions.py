@@ -1,5 +1,6 @@
 import os
 
+from docx import Document
 from PIL import Image
 from imagehash import dhash
 
@@ -13,3 +14,14 @@ def compare_pngs(first_serial_number: int, second_serial_number: int) -> bool:
 
 def delete_file(serial_number: int) -> None:
     os.remove(f'assets/screenshot_{serial_number}.png')
+
+
+def add_picture_to_docx(photo_serial_number: int) -> None:
+    doc = Document()
+    
+    doc.add_picture(
+        image_path_or_stream=f'assets/screenshot_{photo_serial_number}.png',
+        width=Image.open(f'assets/screenshot_{photo_serial_number}.png').size[0], 
+        height=Image.open(f'assets/screenshot_{photo_serial_number}.png').size[1]
+    )
+    doc.save('results.docx')

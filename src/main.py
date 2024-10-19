@@ -3,7 +3,7 @@ import constants
 from selenium import webdriver
 from selenium.common.exceptions import WebDriverException
 
-from files_interactions import compare_pngs, delete_file
+from files_interactions import add_picture_to_docx, compare_pngs, delete_file
 from app.driver_builder import options
 from app.page import cursor, page_render_delay, PageDriver
 from app.page.loading import prepare_page
@@ -69,7 +69,7 @@ def main() -> None:
 
 if __name__ == '__main__':
     try:
-        main()
+        add_picture_to_docx(1)
     except (KeyboardInterrupt, WebDriverException) as error:
         if isinstance(error, WebDriverException):
             print('Network error')
