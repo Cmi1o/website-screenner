@@ -14,7 +14,7 @@ class ScreenSizes(NamedTuple):
 class PageDriver:
     def __init__(self, driver: WebDriver) -> None:
         self.__driver = driver
-
+    
     def open_new_tab(self, url: str) -> None:
         body = self.__driver.find_element(By.TAG_NAME, 'body')
         
