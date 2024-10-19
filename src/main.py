@@ -6,7 +6,6 @@ from selenium.common.exceptions import WebDriverException
 from files_interactions import compare_pngs, delete_file
 from app.driver_builder import options
 from app.page import cursor, page_render_delay, PageDriver
-from app.page import cursor
 from app.page.loading import prepare_page
 from screenshots import screens_maker
 from get_url import next_page_url
