@@ -30,7 +30,7 @@ def main() -> None:
         is_last_photo = False
         has_next_page = True
         
-        prepare_page(driver)
+        prepare_page()
         cursor.accept_cookies(has_taskbar=False)
         cursor.remove_automatic_software_banner()
         cursor.move_to_top()
@@ -71,7 +71,7 @@ def main() -> None:
                     ),
                     driver=driver
                 )
-                prepare_page(driver)
+                prepare_page()
             
             else:
                 has_next_page = False
