@@ -110,20 +110,6 @@ files = [
 pycparser = "*"
 
 [[package]]
-name = "docx"
-version = "0.2.4"
-description = "The docx module creates, reads and writes Microsoft Office Word 2007 docx files"
-optional = false
-python-versions = "*"
-files = [
-    {file = "docx-0.2.4.tar.gz", hash = "sha256:9d7595eac6e86cda0b7136a2995318d039c1f3eaa368a3300805abbbe5dc8877"},
-]
-
-[package.dependencies]
-lxml = "*"
-Pillow = ">=2.0"
-
-[[package]]
 name = "exceptiongroup"
 version = "1.2.2"
 description = "Backport of PEP 654 (exception groups)"
@@ -677,6 +663,21 @@ files = [
 ]
 
 [[package]]
+name = "python-docx"
+version = "1.1.2"
+description = "Create, read, and update Microsoft Word .docx files."
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "python_docx-1.1.2-py3-none-any.whl", hash = "sha256:08c20d6058916fb19853fcf080f7f42b6270d89eac9fa5f8c15f691c0017fabe"},
+    {file = "python_docx-1.1.2.tar.gz", hash = "sha256:0cf1f22e95b9002addca7948e16f2cd7acdfd498047f1941ca5d293db7762efd"},
+]
+
+[package.dependencies]
+lxml = ">=3.1.0"
+typing-extensions = ">=4.9.0"
+
+[[package]]
 name = "python3-xlib"
 version = "0.15"
 description = "Python3 X Library"
@@ -953,4 +954,4 @@ h11 = ">=0.9.0,<1"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "e0dd15d8728011bb066ab8868b3699790f10c19db4c84abc33025266048e55e5"
+content-hash = "101ff96f8187de877baa1232957a099e24d924b9da01b05ca6ab9e357c106871"
