@@ -29,8 +29,9 @@ class PageDriver:
             ))
         except NoSuchElementException:
             return False
-
-    def get_screen_size(self) -> ScreenSizes:
+    
+    @property
+    def screen_size(self) -> ScreenSizes:
         return ScreenSizes(
             width=self.__driver.get_window_size()['width'],
             height=self.__driver.get_window_size()['height']

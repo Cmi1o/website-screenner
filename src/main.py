@@ -31,7 +31,7 @@ def main() -> None:
         cursor.move_to_top()
         
         while has_next_page:
-            screen_height = page_driver.get_screen_size().height
+            screen_height = page_driver.screen_size.height
             
             while page_screens_count < constants.MAX_SCREENS_COUNT and not is_last_photo:
                 page_screens_count += 1
