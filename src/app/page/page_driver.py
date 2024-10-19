@@ -8,8 +8,8 @@ from selenium.webdriver.common.keys import Keys
 
 
 class ScreenSizes(NamedTuple):
-    width: int
-    height: int
+    width: int | float
+    height: int | float
 
 
 class PageDriver:
