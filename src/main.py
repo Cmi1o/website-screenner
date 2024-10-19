@@ -46,8 +46,11 @@ def main() -> None:
                 
                 if not screens_count == 1:
                     if compare_pngs(screens_count - 1, screens_count) is True:
-                        is_last_photo = True
                         delete_file(screens_count)
+                        
+                        is_last_photo = True
+                        screens_count -= 1
+                        page_screens_count -= 1
                 
                 scroll_down(
                     driver=driver,
