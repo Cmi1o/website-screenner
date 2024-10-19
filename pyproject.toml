@@ -1,6 +1,6 @@
 [tool.poetry]
 package-mode = false
-name = "website-screenner"
+name = "website-screener"
 version = "0.1.0"
 authors = ["Georgiy Vasin <georgijvasin01@gmail.com>"]
 readme = "README.md"
