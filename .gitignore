@@ -5,6 +5,10 @@
 # Byte-compiled
 __pycache__/
 
+
+# folder with screenshots
+assets/
+
 # todo files
 todo.*
 TODO.*
