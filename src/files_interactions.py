@@ -8,8 +8,8 @@ from imagehash import dhash
 
 
 def compare_pngs(first_serial_number: int, second_serial_number: int) -> bool:
-    first_path = constants.BASE_SCREENSHOT_PATH.format(first_serial_number)
-    second_path = constants.BASE_SCREENSHOT_PATH.format(second_serial_number)
+    first_path = constants.SCREENSHOT_PATH.format(first_serial_number)
+    second_path = constants.SCREENSHOT_PATH.format(second_serial_number)
     
     return dhash(Image.open(first_path)) == dhash(Image.open(second_path))
 
@@ -20,7 +20,7 @@ def delete_file(serial_number: int) -> None:
 
 def add_picture_to_docx(photo_serial_number: int) -> None:
     doc = Document()
-    path = constants.BASE_SCREENSHOT_PATH.format(photo_serial_number)
+    path = constants.SCREENSHOT_PATH.format(photo_serial_number)
     
     doc.add_picture(
         image_path_or_stream=path,
