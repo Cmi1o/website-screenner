@@ -1,13 +1,15 @@
 import os
 
+import constants
+
 from docx import Document
 from PIL import Image
 from imagehash import dhash
 
 
 def compare_pngs(first_serial_number: int, second_serial_number: int) -> bool:
-    first_path = f'assets/screenshot_{first_serial_number}.png'
-    second_path = f'assets/screenshot_{second_serial_number}.png'
+    first_path = constants.BASE_SCREENSHOT_PATH.format(first_serial_number)
+    second_path = constants.BASE_SCREENSHOT_PATH.format(second_serial_number)
     
     return dhash(Image.open(first_path)) == dhash(Image.open(second_path))
 
@@ -18,10 +20,11 @@ def delete_file(serial_number: int) -> None:
 
 def add_picture_to_docx(photo_serial_number: int) -> None:
     doc = Document()
+    path = constants.BASE_SCREENSHOT_PATH.format(photo_serial_number)
     
     doc.add_picture(
-        image_path_or_stream=f'assets/screenshot_{photo_serial_number}.png',
-        width=Image.open(f'assets/screenshot_{photo_serial_number}.png').size[0], 
-        height=Image.open(f'assets/screenshot_{photo_serial_number}.png').size[1]
+        image_path_or_stream=path,
+        width=Image.open(path).size[0], 
+        height=Image.open(path).size[1]
     )
     doc.save('results.docx')

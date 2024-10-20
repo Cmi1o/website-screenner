@@ -1,9 +1,11 @@
 import pyautogui as GU
 
+import constants
+
 
 class ScreenshotMaker:
     def take_screenshot(self, serial_number: int) -> None:
-        GU.screenshot(f'assets/screenshot_{serial_number}.png')
+        GU.screenshot(constants.BASE_SCREENSHOT_PATH.format(serial_number))
 
 
 screens_maker = ScreenshotMaker()
