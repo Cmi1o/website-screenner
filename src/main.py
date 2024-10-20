@@ -44,7 +44,6 @@ def main() -> None:
                         
                         is_last_photo = True
                         screens_count -= 1
-                        page_screens_count -= 1
                 
                 page_driver.scroll_down(screen_height * constants.PAGE_SCROLL_PERCENT)
                 page_render_delay(1.5)
