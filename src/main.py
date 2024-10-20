@@ -3,12 +3,12 @@ import constants
 from selenium import webdriver
 from selenium.common.exceptions import WebDriverException
 
-from files_interactions import add_picture_to_docx, compare_pngs, delete_file
 from app.driver_builder import options
 from app.page import cursor, page_render_delay, PageDriver
 from app.page.loading import prepare_page
 from screenshots import screens_maker
 from get_url import next_page_url
+from files_interactions import FilesManager
 
 
 def main() -> None:
@@ -30,6 +30,7 @@ def main() -> None:
         cursor.move_to_top()
         
         while has_next_page:
+            files_manager = FilesManager(page_url=driver.current_url)
             screen_height = page_driver.screen_size.height
             
             while page_screens_count < constants.MAX_SCREENS_COUNT and not is_last_photo:
@@ -39,8 +40,8 @@ def main() -> None:
                 screens_maker.take_screenshot(serial_number=screens_count)
                 
                 if not screens_count == 1:
-                    if compare_pngs(screens_count - 1, screens_count) is True:
-                        delete_file(screens_count)
+                    if files_manager.compare_pngs(screens_count - 1, screens_count) is True:
+                        files_manager.delete_file(screens_count)
                         
                         is_last_photo = True
                         screens_count -= 1
@@ -61,6 +62,7 @@ def main() -> None:
                     )
                 )
                 prepare_page()
+                files_manager.page_url = driver.current_url
             
             else:
                 has_next_page = False
@@ -68,7 +70,7 @@ def main() -> None:
 
 if __name__ == '__main__':
     try:
-        add_picture_to_docx(1)
+        main()
     except (KeyboardInterrupt, WebDriverException) as error:
         if isinstance(error, WebDriverException):
             print('Network error')
