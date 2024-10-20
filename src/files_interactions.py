@@ -22,9 +22,5 @@ def add_picture_to_docx(photo_serial_number: int) -> None:
     doc = Document()
     path = constants.SCREENSHOT_PATH.format(photo_serial_number)
     
-    doc.add_picture(
-        image_path_or_stream=path,
-        width=Image.open(path).size[0], 
-        height=Image.open(path).size[1]
-    )
+    doc.add_picture(image_path_or_stream=path)
     doc.save('results.docx')
