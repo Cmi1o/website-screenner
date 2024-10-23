@@ -27,6 +27,9 @@ class FilesManager:
     def delete_file(self, serial_number: int) -> None:
         os.remove(self._get_path(serial_number))
     
+    def create_new_docx(self, path: str | None=None) -> None:
+        open(path if path else f'assets/{self.page_url}.docx', 'a+').close()
+    
     def add_picture_to_docx(
         self, 
         photo_serial_number: int, 
