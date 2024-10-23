@@ -28,7 +28,8 @@ class FilesManager:
         os.remove(self._get_path(serial_number))
     
     def create_new_docx(self, path: str | None=None) -> None:
-        open(path if path else f'assets/{self.page_url}.docx', 'a+').close()
+        doc = Document()
+        doc.save(path if path else f'assets/{self.page_url}.docx')
     
     def add_picture_to_docx(
         self, 
