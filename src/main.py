@@ -37,10 +37,12 @@ def main() -> None:
                 page_screens_count += 1
                 screens_count += 1
                 
-                screens_maker.take_screenshot(serial_number=screens_count)
+                screens_maker.take_screenshot(driver.current_url, screens_count)
                 
                 if not screens_count == 1:
-                    if files_manager.compare_pngs(screens_count - 1, screens_count) is True:
+                    if files_manager.compare_pngs(
+                        screens_count - 1, screens_count
+                    ) is True:
                         files_manager.delete_file(screens_count)
                         
                         is_last_photo = True
