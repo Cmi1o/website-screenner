@@ -32,14 +32,19 @@ class FilesManager:
     
     def create_new_docx(self, path: str | None=None) -> None:
         doc = Document()
-        doc.save(path if path else f'assets/{self.page_url}.docx')
+        doc.save(path if path else self.__absolute_path(
+            f'assets/{self.page_url}.docx'
+        ))
     
     def add_picture_to_docx(
         self, 
         photo_serial_number: int, 
         path: str | None=None
     ) -> None:
-        doc = Document(path if path else f'assets/{self.page_url}.docx')
+        path = path if path else self.__absolute_path(
+            f'assets/{self.page_url}.docx'
+        )
+        doc = Document(path)
         
         doc.add_picture(self._get_photo_path(
             photo_serial_number
