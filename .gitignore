@@ -7,7 +7,7 @@ __pycache__/
 
 
 # folder with screenshots
-assets/
+assets/*.png
 
 # todo files
 todo.*
