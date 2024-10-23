@@ -11,6 +11,10 @@ class FilesManager:
     def __init__(self, page_url: str) -> None:
         self.page_url = page_url
     
+    @staticmethod
+    def __absolute_path(file_path: str) -> str:
+        return os.path.abspath(file_path)
+    
     def _get_photo_path(self, photo_serial_number: int) -> str:
         return constants.SCREENSHOT_PATH.format(
             hash(self.page_url),
