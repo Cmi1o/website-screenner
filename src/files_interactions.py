@@ -49,4 +49,4 @@ class FilesManager:
         doc.add_picture(self._get_photo_path(
             photo_serial_number
         ))
-        doc.save(path if path else f'assets/result_{self.page_url}.docx')
+        doc.save(path)
