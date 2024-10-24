@@ -2,11 +2,16 @@ import os
 
 import constants
 
+from typing import Literal
+
 from docx import Document
 from docx.shared import Inches
+from docx.enum.section import WD_ORIENT
 from PIL import Image
 from imagehash import dhash
 
+
+TOrientation = Literal['landscape', 'portrait']
 
 class FilesManager:
     def __init__(self, page_url: str) -> None:
@@ -53,4 +58,23 @@ class FilesManager:
             ),
             width=Inches(constants.INCHES_IMAGE_COUNT)
         )
+        doc.save(path)
+    
+    def switch_orientation(
+        self, 
+        orientation: TOrientation, 
+        path: str | None=None, 
+        section: int=0
+    ) -> None:
+        path = path if path else self.__absolute_path(
+            f'assets/{self.page_url}.docx'
+        )
+        
+        doc = Document(path)
+        doc_section = doc.sections[section]
+        
+        doc_section.orientation = getattr(WD_ORIENT, orientation.upper())
+        doc_section.page_width = doc_section.page_height
+        doc_section.page_height = doc_section.page_width
+        
         doc.save(path)
