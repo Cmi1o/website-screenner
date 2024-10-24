@@ -3,6 +3,7 @@ import os
 import constants
 
 from docx import Document
+from docx.shared import Inches
 from PIL import Image
 from imagehash import dhash
 
@@ -37,8 +38,8 @@ class FilesManager:
         ))
     
     def add_picture_to_docx(
-        self, 
-        photo_serial_number: int, 
+        self,
+        photo_serial_number: int,
         path: str | None=None
     ) -> None:
         path = path if path else self.__absolute_path(
@@ -46,7 +47,10 @@ class FilesManager:
         )
         doc = Document(path)
         
-        doc.add_picture(self._get_photo_path(
-            photo_serial_number
-        ))
+        doc.add_picture(
+            self._get_photo_path(
+                photo_serial_number
+            ),
+            width=Inches(constants.INCHES_IMAGE_COUNT)
+        )
         doc.save(path)
