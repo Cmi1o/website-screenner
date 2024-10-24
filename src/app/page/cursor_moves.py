@@ -1,11 +1,11 @@
 import pyautogui as GU
 
-from decorators import create_delay
+from decorators import delayed
 
 
 class Cursor:
     @staticmethod
-    @create_delay()
+    @delayed()
     def accept_cookies(has_taskbar: bool=True) -> None:
         y = GU.size().height * 0.9 if has_taskbar else GU.size().height * 0.925
         
@@ -20,7 +20,7 @@ class Cursor:
         GU.moveTo(x=GU.size().width // 2, y=0 + 1)
     
     @staticmethod
-    @create_delay()
+    @delayed()
     def remove_automatic_software_banner() -> None:
         GU.moveTo(
             x=GU.size().width - 34, 

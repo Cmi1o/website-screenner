@@ -9,7 +9,7 @@ _F_return = TypeVar('_F_return')
 number = int | float
 
 
-class create_delay:
+class delayed:
     def __init__(self, delay: number=0.5) -> None:
         self.delay = delay
     
