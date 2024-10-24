@@ -33,6 +33,9 @@ def main() -> None:
             files_manager = FilesManager(page_url=driver.current_url)
             screen_height = page_driver.screen_size.height
             
+            files_manager.create_new_docx()
+            files_manager.switch_orientation('landscape')
+            
             while page_screens_count < constants.MAX_SCREENS_COUNT and not is_last_photo:
                 page_screens_count += 1
                 screens_count += 1
