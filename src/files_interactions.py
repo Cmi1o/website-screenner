@@ -17,6 +17,7 @@ class FilesManager:
     def __init__(self, page_url: str) -> None:
         self._source_page_url = page_url
         self.page_url = page_url.split('/')[-1]
+        self._docx_path =  self.__absolute_path(f'assets/{self.page_url}.docx')
     
     @staticmethod
     def __absolute_path(file_path: str) -> str:
