@@ -15,7 +15,8 @@ TOrientation = Literal['landscape', 'portrait']
 
 class FilesManager:
     def __init__(self, page_url: str) -> None:
-        self.page_url = page_url
+        self._source_page_url = page_url
+        self.page_url = page_url.split('/')[-1]
     
     @staticmethod
     def __absolute_path(file_path: str) -> str:
@@ -23,7 +24,7 @@ class FilesManager:
     
     def _get_photo_path(self, photo_serial_number: int) -> str:
         return constants.SCREENSHOT_PATH.format(
-            hash(self.page_url),
+            hash(self._source_page_url),
             photo_serial_number
         )
     
