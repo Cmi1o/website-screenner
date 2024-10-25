@@ -1,28 +1,28 @@
 import tkinter as tk
 
-# После закрытия окна, переменная user_input будет содержать введенный текст
-# user_input = ""
 
+class UI:
+    def __init__(self):
+        self.user_input = ""
 
-def start_ui() -> str:
-    user_input = ""
+        self.root = tk.Tk()
+        self.root.title("Отсканировать продавца")
 
-    def save_text():
-        nonlocal user_input
-        user_input = entry.get()
-        root.destroy()
+        label = tk.Label(self.root, text="Добро пожаловать! Введите ссылку на магазин:")
+        label.pack(pady=10)
 
-    root = tk.Tk()
-    root.title("Отсканировать продавца")
+        self.entry = tk.Entry(self.root, width=100)
+        self.entry.pack(pady=10)
 
-    label = tk.Label(root, text="Добро пожаловать! Введите ссылку на магазин:")
-    label.pack(pady=10)
+        button = tk.Button(self.root, text="Отсканировать", command=self.save_text)
+        button.pack(pady=10)
 
-    entry = tk.Entry(root, width=100)
-    entry.pack(pady=10)
+        self.root.mainloop()
 
-    button = tk.Button(root, text="Отсканировать", command=save_text)
-    button.pack(pady=10)
+    def save_text(self):
+        self.user_input = self.entry.get()
+        self.root.destroy()
 
-    root.mainloop()
-    return user_input
+    def get_user_input(self):
+        return self.user_input
+

@@ -13,7 +13,8 @@ import user_interface
 
 
 def main() -> None:
-    url = user_interface.start_ui()
+    ui = user_interface.UI()
+    url = ui.get_user_input()
     # url = 'https://www.wildberries.ru/seller/1158424'
     
     with webdriver.Chrome(options) as driver:
