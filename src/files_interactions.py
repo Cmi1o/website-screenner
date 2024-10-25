@@ -84,4 +84,20 @@ class FilesManager:
         doc_section.page_width = doc_section.page_height
         doc_section.page_height = doc_section.page_width
         
-        doc.save(path)
+        doc.save(docx_path)
+    
+    def fill_docx_by_dir_pngs(self, dir_path: str, docx_path: str | None=None) -> None:
+        if not self.is_exist(dir_path):
+            raise ValueError(f'Directory {dir_path} does not exist')
+        
+        docx_path = docx_path if docx_path else self._docx_path
+        
+        for file_name in os.listdir(self.__absolute_path(dir_path)):
+            if (
+                file_name.endswith('.png') and 
+                str(hash(self._source_page_url)) in file_name
+            ):
+                self.add_picture_to_docx(
+                    photo_serial_number=int(file_name.split('_')[-1][0]),
+                    docx_path=docx_path
+                )
