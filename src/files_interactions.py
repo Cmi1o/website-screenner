@@ -36,6 +36,10 @@ class FilesManager:
     def delete_file(self, serial_number: int) -> None:
         os.remove(self._get_photo_path(serial_number))
     
+    def create_new_folder(self, path: str | None=None) -> None:
+        path = path if path else self.__absolute_path('assets')
+        os.mkdir(path)
+    
     def create_new_docx(self, path: str | None=None) -> None:
         doc = Document()
         doc.save(path if path else self.__absolute_path(
