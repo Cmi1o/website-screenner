@@ -30,7 +30,7 @@ def main() -> None:
         cursor.move_to_top()
         
         while has_next_page:
-            files_manager = FilesManager(page_url=driver.current_url)
+            files_manager = FilesManager(page_url=url)
             screen_height = page_driver.screen_size.height
             
             files_manager.create_new_docx()
@@ -40,7 +40,7 @@ def main() -> None:
                 page_screens_count += 1
                 screens_count += 1
                 
-                screens_maker.take_screenshot(driver.current_url, screens_count)
+                screens_maker.take_screenshot(url, screens_count)
                 
                 if not screens_count == 1:
                     if files_manager.compare_pngs(
@@ -67,7 +67,7 @@ def main() -> None:
                     )
                 )
                 prepare_page()
-                files_manager.page_url = driver.current_url
+                files_manager.page_url = url
             
             else:
                 has_next_page = False
