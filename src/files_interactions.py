@@ -42,6 +42,10 @@ class FilesManager:
             f'assets/{self.page_url}.docx'
         ))
     
+    def is_exist(self, path: str | None=None) -> bool:
+        path = path if path else self.__absolute_path('assets')
+        return os.path.exists(path)
+    
     def add_picture_to_docx(
         self,
         photo_serial_number: int,
