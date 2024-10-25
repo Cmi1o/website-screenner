@@ -35,11 +35,7 @@ def main() -> None:
         cursor.move_to_top()
         
         while has_next_page:
-            files_manager = FilesManager(page_url=url)
             screen_height = page_driver.screen_size.height
-            
-            files_manager.create_new_docx()
-            files_manager.switch_orientation('landscape')
             
             while page_screens_count < constants.MAX_SCREENS_COUNT and not is_last_photo:
                 page_screens_count += 1
@@ -72,10 +68,13 @@ def main() -> None:
                     )
                 )
                 prepare_page()
-                files_manager.page_url = url
             
             else:
                 has_next_page = False
+        
+        files_manager.create_new_docx()
+        files_manager.switch_orientation('landscape')
+        files_manager.fill_docx_by_dir_pngs(dir_path=constants.ASSETS_PATH)
 
 
 if __name__ == '__main__':
