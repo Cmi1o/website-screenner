@@ -86,7 +86,7 @@ class FilesManager:
         
         doc.save(docx_path)
     
-    def fill_docx_by_dir_pngs(self, dir_path: str, docx_path: str | None=None) -> None:
+    def fill_docx_by_dir_pngs(self, *, dir_path: str, docx_path: str | None=None) -> None:
         if not self.is_exist(dir_path):
             raise ValueError(f'Directory {dir_path} does not exist')
         
