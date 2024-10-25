@@ -18,6 +18,11 @@ def main() -> None:
         driver.get(url)
         
         page_driver = PageDriver(driver)
+        files_manager = FilesManager(page_url=url)
+        
+        if not files_manager.is_exist(constants.ASSETS_PATH):
+            files_manager.create_new_folder(constants.ASSETS_PATH)
+        
         pages_count = 1
         page_screens_count = 0
         screens_count = 0
