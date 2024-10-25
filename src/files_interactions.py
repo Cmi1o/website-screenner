@@ -41,10 +41,13 @@ class FilesManager:
         os.mkdir(self.__absolute_path(path))
     
     def create_new_docx(self, path: str | None=None) -> None:
+        path = self.__absolute_path(
+            path if path else f'assets/{self.page_url}.docx'
+        )
+        
         doc = Document()
-        doc.save(path if path else self.__absolute_path(
-            f'assets/{self.page_url}.docx'
-        ))
+        doc.save(path)
+        self._docx_path = path
     
     def is_exist(self, path: str) -> bool:
         return os.path.exists(self.__absolute_path(path))
@@ -52,12 +55,10 @@ class FilesManager:
     def add_picture_to_docx(
         self,
         photo_serial_number: int,
-        path: str | None=None
+        docx_path: str | None=None
     ) -> None:
-        path = path if path else self.__absolute_path(
-            f'assets/{self.page_url}.docx'
-        )
-        doc = Document(path)
+        docx_path = self.__absolute_path(docx_path if docx_path else self._docx_path)
+        doc = Document(docx_path)
         
         doc.add_picture(
             self._get_photo_path(
@@ -65,19 +66,17 @@ class FilesManager:
             ),
             width=Inches(constants.INCHES_IMAGE_COUNT)
         )
-        doc.save(path)
+        doc.save(docx_path)
     
     def switch_orientation(
         self, 
-        orientation: TOrientation, 
-        path: str | None=None, 
+        orientation: TOrientation,
+        docx_path: str | None=None, 
         section: int=0
     ) -> None:
-        path = path if path else self.__absolute_path(
-            f'assets/{self.page_url}.docx'
-        )
+        docx_path = self.__absolute_path(docx_path if docx_path else self._docx_path)
         
-        doc = Document(path)
+        doc = Document(docx_path)
         doc_section = doc.sections[section]
         
         doc_section.orientation = getattr(WD_ORIENT, orientation.upper())
