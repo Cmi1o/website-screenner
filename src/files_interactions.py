@@ -98,6 +98,7 @@ class FilesManager:
                 str(hash(self._source_page_url)) in file_name
             ):
                 self.add_picture_to_docx(
-                    photo_serial_number=int(file_name.split('_')[-1][0]),
+                    # from screenshot_hash_someInt.png to someInt
+                    photo_serial_number=int(file_name.split('_')[-1].split('.')[0]),
                     docx_path=docx_path
                 )
