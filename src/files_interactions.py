@@ -58,7 +58,7 @@ class FilesManager:
         photo_serial_number: int,
         docx_path: str | None=None
     ) -> None:
-        docx_path = self._abs_path(docx_path if docx_path else self._docx_path)
+        docx_path = self._abs_path(docx_path) if docx_path else self._docx_path
         doc = Document(docx_path)
         
         doc.add_picture(
@@ -76,7 +76,7 @@ class FilesManager:
         docx_path: str | None=None,
         section: int=0
     ) -> None:
-        docx_path = self._abs_path(docx_path if docx_path else self._docx_path)
+        docx_path = self._abs_path(docx_path) if docx_path else self._docx_path
         
         doc = Document(docx_path)
         doc_section = doc.sections[section]
@@ -91,7 +91,7 @@ class FilesManager:
         if not self.is_exist(dir_path):
             raise ValueError(f'Directory {dir_path} does not exist')
         
-        docx_path = self._abs_path(docx_path if docx_path else self._docx_path)
+        docx_path = self._abs_path(docx_path) if docx_path else self._docx_path
         
         for file_name in os.listdir(self._abs_path(dir_path)):
             if (
