@@ -17,10 +17,10 @@ class FilesManager:
     def __init__(self, *, page_url: str) -> None:
         self._source_page_url = page_url
         self.page_url = page_url.split('/')[-1]
-        self._docx_path =  self.__absolute_path(f'assets/{self.page_url}.docx')
+        self._docx_path =  self._abs_path(f'assets/{self.page_url}.docx')
     
     @staticmethod
-    def __absolute_path(file_path: str) -> str:
+    def _abs_path(file_path: str) -> str:
         return os.path.abspath(file_path)
     
     def _get_photo_path(self, photo_serial_number: int) -> str:
@@ -39,10 +39,10 @@ class FilesManager:
         os.remove(self._get_photo_path(serial_number))
     
     def create_new_folder(self, path: str) -> None:
-        os.mkdir(self.__absolute_path(path))
+        os.mkdir(self._abs_path(path))
     
     def create_new_docx(self, path: str | None=None) -> None:
-        path = self.__absolute_path(
+        path = self._abs_path(
             path if path else f'assets/{self.page_url}.docx'
         )
         
@@ -51,14 +51,14 @@ class FilesManager:
         self._docx_path = path
     
     def is_exist(self, path: str) -> bool:
-        return os.path.exists(self.__absolute_path(path))
+        return os.path.exists(self._abs_path(path))
     
     def add_picture_to_docx(
         self,
         photo_serial_number: int,
         docx_path: str | None=None
     ) -> None:
-        docx_path = self.__absolute_path(docx_path if docx_path else self._docx_path)
+        docx_path = self._abs_path(docx_path if docx_path else self._docx_path)
         doc = Document(docx_path)
         
         doc.add_picture(
@@ -76,7 +76,7 @@ class FilesManager:
         docx_path: str | None=None,
         section: int=0
     ) -> None:
-        docx_path = self.__absolute_path(docx_path if docx_path else self._docx_path)
+        docx_path = self._abs_path(docx_path if docx_path else self._docx_path)
         
         doc = Document(docx_path)
         doc_section = doc.sections[section]
@@ -91,9 +91,9 @@ class FilesManager:
         if not self.is_exist(dir_path):
             raise ValueError(f'Directory {dir_path} does not exist')
         
-        docx_path = self.__absolute_path(docx_path if docx_path else self._docx_path)
+        docx_path = self._abs_path(docx_path if docx_path else self._docx_path)
         
-        for file_name in os.listdir(self.__absolute_path(dir_path)):
+        for file_name in os.listdir(self._abs_path(dir_path)):
             if (
                 file_name.endswith('.png') and 
                 str(hash(self._source_page_url)) in file_name
