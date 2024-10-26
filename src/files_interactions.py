@@ -91,7 +91,7 @@ class FilesManager:
         if not self.is_exist(dir_path):
             raise ValueError(f'Directory {dir_path} does not exist')
         
-        docx_path = docx_path if docx_path else self._docx_path
+        docx_path = self.__absolute_path(docx_path if docx_path else self._docx_path)
         
         for file_name in os.listdir(self.__absolute_path(dir_path)):
             if (
