@@ -24,7 +24,7 @@ class PageDriver:
     def is_next_page_button_found(self) -> bool:
         try:
             return bool(self.__driver.find_element(
-                By.LINK_TEXT, 'Следующая страница'
+                By.LINK_TEXT, 'Следующая страница'  # if russian language
             ))
         except NoSuchElementException:
             return False

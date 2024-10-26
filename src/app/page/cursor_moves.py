@@ -10,8 +10,8 @@ class Cursor:
         y = GU.size().height * 0.9 if has_taskbar else GU.size().height * 0.925
         
         GU.moveTo(
-            x=GU.size().width * 0.35,  # координата 0 находится слева
-            y=y  # координата 0 находится сверху
+            x=GU.size().width * 0.35,  # 0 coordinate is on the left
+            y=y  # 0 coordinate is on the top
         )
         GU.click()
     

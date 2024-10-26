@@ -16,7 +16,7 @@ TOrientation = Literal['landscape', 'portrait']
 class FilesManager:
     def __init__(self, *, page_url: str) -> None:
         self._source_page_url = page_url
-        self.page_url = page_url.split('/')[-1]
+        self.page_url = page_url.split('/')[-1]  # seller id
         self._docx_path =  self._abs_path(f'assets/{self.page_url}.docx')
     
     @staticmethod
