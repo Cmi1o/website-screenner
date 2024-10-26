@@ -6,11 +6,10 @@ from app.page.loading import page_render_delay
 
 _S = ParamSpec('_S')
 _R = TypeVar('_R')
-number = int | float
 
 
 class delayed:
-    def __init__(self, delay: number=0.5) -> None:
+    def __init__(self, delay: float=0.5) -> None:
         self.delay = delay
     
     def __call__(
