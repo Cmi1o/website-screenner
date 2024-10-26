@@ -13,12 +13,12 @@ from files_interactions import FilesManager
 
 def main() -> None:
     url = 'https://www.wildberries.ru/seller/1158424'
+    files_manager = FilesManager(page_url=url)
     
     with webdriver.Chrome(options) as driver:
         driver.get(url)
         
         page_driver = PageDriver(driver)
-        files_manager = FilesManager(page_url=url)
         
         if not files_manager.is_exist(constants.ASSETS_PATH):
             files_manager.create_new_folder(constants.ASSETS_PATH)
@@ -72,9 +72,9 @@ def main() -> None:
             else:
                 has_next_page = False
         
-        files_manager.create_new_docx()
-        files_manager.switch_orientation(orientation='landscape')
-        files_manager.fill_docx_by_dir_pngs(dir_path=constants.ASSETS_PATH)
+    files_manager.create_new_docx()
+    files_manager.switch_orientation(orientation='landscape')
+    files_manager.fill_docx_by_dir_pngs(dir_path=constants.ASSETS_PATH)
 
 
 if __name__ == '__main__':
