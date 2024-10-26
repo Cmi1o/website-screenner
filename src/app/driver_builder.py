@@ -6,7 +6,6 @@ def set_options() -> ChromeOptions:
     
     options.add_argument('--ignore-certificate-errors')
     options.add_argument('--ignore-ssl-errors')
-    options.add_argument('--ignore-certificate-errors-spki-list')
     
     return options
 
