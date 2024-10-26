@@ -14,7 +14,7 @@ from imagehash import dhash
 TOrientation = Literal['landscape', 'portrait']
 
 class FilesManager:
-    def __init__(self, page_url: str) -> None:
+    def __init__(self, *, page_url: str) -> None:
         self._source_page_url = page_url
         self.page_url = page_url.split('/')[-1]
         self._docx_path =  self.__absolute_path(f'assets/{self.page_url}.docx')
@@ -70,9 +70,10 @@ class FilesManager:
         doc.save(docx_path)
     
     def switch_orientation(
-        self, 
+        self,
+        *,
         orientation: TOrientation,
-        docx_path: str | None=None, 
+        docx_path: str | None=None,
         section: int=0
     ) -> None:
         docx_path = self.__absolute_path(docx_path if docx_path else self._docx_path)
