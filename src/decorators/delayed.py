@@ -9,7 +9,7 @@ _R = TypeVar('_R')
 
 
 class delayed:
-    def __init__(self, delay: float=0.5) -> None:
+    def __init__(self, delay: int | float=0.5) -> None:
         self.delay = delay
     
     def __call__(self, func: Callable[_S, _R]) -> Callable[_S, _R]:
