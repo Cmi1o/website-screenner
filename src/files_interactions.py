@@ -16,8 +16,8 @@ TOrientation = Literal['landscape', 'portrait']
 class FilesManager:
     def __init__(self, *, page_url: str) -> None:
         self._source_page_url = page_url
-        self.page_url = page_url.split('/')[-1]  # seller id
-        self._docx_path =  self._abs_path(f'assets/{self.page_url}.docx')
+        self._page_url = page_url.split('/')[-1]  # seller id
+        self._docx_path =  self._abs_path(f'assets/{self._page_url}.docx')
     
     @staticmethod
     def _abs_path(file_path: str) -> str:
@@ -43,7 +43,7 @@ class FilesManager:
     
     def create_new_docx(self, path: str | None=None) -> None:
         path = self._abs_path(
-            path if path else f'assets/{self.page_url}.docx'
+            path if path else f'assets/{self._page_url}.docx'
         )
         
         doc = Document()
