@@ -63,7 +63,7 @@ def main() -> None:
                 
                 page_driver.open_new_tab(
                     url=next_page_url(
-                        base_url=url, 
+                        base_url=url,
                         page_number=pages_count
                     )
                 )

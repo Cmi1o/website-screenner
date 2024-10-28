@@ -23,7 +23,7 @@ class Cursor:
     @delayed()
     def remove_automatic_software_banner() -> None:
         GU.moveTo(
-            x=GU.size().width - 34, 
+            x=GU.size().width - 34,
             y=GU.size().height * 0.13
         )
         GU.click()
