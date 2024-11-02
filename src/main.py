@@ -82,4 +82,4 @@ if __name__ == '__main__':
         main()
     except (KeyboardInterrupt, WebDriverException) as error:
         if isinstance(error, WebDriverException):
-            print('Network error')
+            print(error.msg)
