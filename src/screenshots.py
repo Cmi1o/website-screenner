@@ -8,4 +8,4 @@ class ScreenshotMaker:
         GU.screenshot(constants.SCREENSHOT_PATH.format(hash(page_url), serial_number))
 
 
-screens_maker = ScreenshotMaker()
+screenshots_maker = ScreenshotMaker()
