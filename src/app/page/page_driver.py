@@ -30,7 +30,7 @@ class PageDriver:
             return False
     
     @property
-    def screen_size(self) -> ScreenSizes:
+    def screen_sizes(self) -> ScreenSizes:
         return ScreenSizes(
             width=self.__driver.get_window_size()['width'],
             height=self.__driver.get_window_size()['height']
