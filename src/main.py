@@ -6,9 +6,9 @@ from selenium.common.exceptions import WebDriverException
 from app.driver_builder import options
 from app.page import cursor, page_render_delay, PageDriver
 from app.page.loading import prepare_page
+from files_interactions import FilesManager
 from screenshots import screenshots_maker
 from urls import next_page_url
-from files_interactions import FilesManager
 
 
 def main() -> None:
