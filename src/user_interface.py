@@ -25,4 +25,3 @@ class UI:
     
     def get_user_input(self):
         return self.user_input
-

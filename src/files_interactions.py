@@ -85,7 +85,7 @@ class FilesManager:
         
         for file_name in dir_list:
             if (
-                file_name.endswith('.png') and 
+                file_name.endswith('.png') and
                 str(hash(self._source_page_url)) in file_name
             ):
                 doc.add_picture(
