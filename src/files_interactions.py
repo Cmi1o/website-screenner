@@ -78,10 +78,12 @@ class FilesManager:
         def get_number(file_name: str) -> int:
             return int(file_name.split('_')[-1].split('.')[0])
         
+        dir_list = sorted(os.listdir(self._abs_path(dir_path)), key=get_number)
+        
         docx_path = self._abs_path(docx_path) if docx_path else self._docx_path
         doc = Document(docx_path)
         
-        for file_name in os.listdir(self._abs_path(dir_path)):
+        for file_name in dir_list:
             if (
                 file_name.endswith('.png') and 
                 str(hash(self._source_page_url)) in file_name
