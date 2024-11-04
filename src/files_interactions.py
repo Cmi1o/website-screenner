@@ -52,22 +52,6 @@ class FilesManager:
         doc = Document()
         doc.save(path)
         self._docx_path = path
-        
-    def add_picture_to_docx(
-        self,
-        photo_serial_number: int,
-        docx_path: str | None=None
-    ) -> None:
-        docx_path = self._abs_path(docx_path) if docx_path else self._docx_path
-        doc = Document(docx_path)
-        
-        doc.add_picture(
-            self._get_photo_path(
-                photo_serial_number
-            ),
-            width=Inches(constants.INCHES_IMAGE_COUNT)
-        )
-        doc.save(docx_path)
     
     def switch_orientation(
         self,
@@ -92,14 +76,17 @@ class FilesManager:
             raise ValueError(f'Directory {dir_path} does not exist')
         
         docx_path = self._abs_path(docx_path) if docx_path else self._docx_path
+        doc = Document(docx_path)
         
         for file_name in os.listdir(self._abs_path(dir_path)):
             if (
                 file_name.endswith('.png') and 
                 str(hash(self._source_page_url)) in file_name
             ):
-                self.add_picture_to_docx(
-                    # from screenshot_hash_someInt.png to someInt
-                    photo_serial_number=int(file_name.split('_')[-1].split('.')[0]),
-                    docx_path=docx_path
+                doc.add_picture(
+                    self._get_photo_path(
+                        photo_serial_number=int(file_name.split('_')[-1].split('.')[0])
+                    ),
+                    width=Inches(constants.INCHES_IMAGE_COUNT)
                 )
+        doc.save(docx_path)
