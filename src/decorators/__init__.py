@@ -1,1 +1,1 @@
-from .create_delay import create_delay
+from .delayed import delayed

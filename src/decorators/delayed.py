@@ -6,17 +6,13 @@ from app.page.loading import page_render_delay
 
 _S = ParamSpec('_S')
 _R = TypeVar('_R')
-number = int | float
 
 
-class create_delay:
-    def __init__(self, delay: number=0.5) -> None:
+class delayed:
+    def __init__(self, delay: int | float=0.5) -> None:
         self.delay = delay
     
-    def __call__(
-        self, 
-        func: Callable[_S, _R]
-    ) -> Callable[_S, _R]:
+    def __call__(self, func: Callable[_S, _R]) -> Callable[_S, _R]:
         @wraps(func)
         def wrapper(*args, **kwargs) -> _R:
             result = func(*args, **kwargs)
