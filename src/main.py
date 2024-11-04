@@ -1,4 +1,5 @@
 import constants
+import user_interface
 
 from selenium import webdriver
 from selenium.common.exceptions import WebDriverException
@@ -9,13 +10,11 @@ from app.page import cursor, page_render_delay, PageDriver
 from app.page.loading import prepare_page
 from screenshots import screens_maker
 from get_url import next_page_url
-import user_interface
 
 
 def main() -> None:
     ui = user_interface.UI()
     url = ui.get_user_input()
-    # url = 'https://www.wildberries.ru/seller/1158424'
     
     with webdriver.Chrome(options) as driver:
         driver.get(url)
