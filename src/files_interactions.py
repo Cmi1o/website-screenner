@@ -94,4 +94,5 @@ class FilesManager:
                     ),
                     width=Inches(constants.INCHES_IMAGE_COUNT)
                 )
+        
         doc.save(docx_path)
