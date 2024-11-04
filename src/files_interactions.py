@@ -75,6 +75,9 @@ class FilesManager:
         if not self.is_exist(dir_path):
             raise ValueError(f'Directory {dir_path} does not exist')
         
+        def get_number(file_name: str) -> int:
+            return int(file_name.split('_')[-1].split('.')[0])
+        
         docx_path = self._abs_path(docx_path) if docx_path else self._docx_path
         doc = Document(docx_path)
         
@@ -85,7 +88,7 @@ class FilesManager:
             ):
                 doc.add_picture(
                     self._get_photo_path(
-                        photo_serial_number=int(file_name.split('_')[-1].split('.')[0])
+                        photo_serial_number=get_number(file_name)
                     ),
                     width=Inches(constants.INCHES_IMAGE_COUNT)
                 )
