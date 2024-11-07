@@ -13,8 +13,13 @@ from urls import next_page_url
 
 
 def main() -> None:
-    ui = user_interface.UI()
+    ui = user_interface.StartingUI()
+    if ui.canceled:
+        return
     url = ui.get_user_input()
+
+    # do not delete next comment for easy testing!
+    # https://www.wildberries.ru/seller/1158424
     
     files_manager = FilesManager(page_url=url)
     
@@ -85,4 +90,4 @@ if __name__ == '__main__':
         main()
     except (KeyboardInterrupt, WebDriverException) as error:
         if isinstance(error, WebDriverException):
-            print(error.msg)
+            user_interface.ErrorUI("Введена неправильная ссылка или нет доступа к сети")
