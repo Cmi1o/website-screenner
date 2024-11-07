@@ -61,13 +61,15 @@ class FilesManager:
         section: int=0
     ) -> None:
         docx_path = self._abs_path(docx_path) if docx_path else self._docx_path
+        new_orientation: WD_ORIENT = getattr(WD_ORIENT, orientation.upper())
         
         doc = Document(docx_path)
         doc_section = doc.sections[section]
         
-        doc_section.orientation = getattr(WD_ORIENT, orientation.upper())
-        doc_section.page_width = doc_section.page_height
-        doc_section.page_height = doc_section.page_width
+        if doc_section.orientation != new_orientation:
+            doc_section.orientation = new_orientation
+            doc_section.page_width = doc_section.page_height
+            doc_section.page_height = doc_section.page_width
         
         doc.save(docx_path)
     
