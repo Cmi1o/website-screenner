@@ -13,9 +13,13 @@ import user_interface
 
 
 def main() -> None:
-    ui = user_interface.UI()
+    ui = user_interface.StartingUI()
+    if ui.canceled:
+        return
     url = ui.get_user_input()
-    # url = 'https://www.wildberries.ru/seller/1158424'
+
+    # do not delete next comment for easy testing!
+    # https://www.wildberries.ru/seller/1158424
     
     with webdriver.Chrome(options) as driver:
         driver.get(url)
@@ -75,4 +79,4 @@ if __name__ == '__main__':
         main()
     except (KeyboardInterrupt, WebDriverException) as error:
         if isinstance(error, WebDriverException):
-            print('Network error')
+            user_interface.ErrorUI("Введена неправильная ссылка или нет доступа к сети")
