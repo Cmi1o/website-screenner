@@ -25,7 +25,6 @@ def main() -> None:
     
     with webdriver.Chrome(options) as driver:
         driver.get(url)
-        
         page_driver = PageDriver(driver)
         
         if not files_manager.is_exist(constants.ASSETS_PATH):
@@ -80,7 +79,9 @@ def main() -> None:
             else:
                 has_next_page = False
     
-    files_manager.create_new_docx()
+    if not files_manager.is_exist(constants.DOCX_PATH.format(url)):
+        files_manager.create_new_docx()
+    
     files_manager.switch_orientation(orientation='landscape')
     files_manager.fill_docx_by_dir_pngs(dir_path=constants.ASSETS_PATH)
 
