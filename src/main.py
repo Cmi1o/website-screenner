@@ -16,7 +16,7 @@ def main() -> None:
     ui = user_interface.StartingUI()
     if ui.canceled: return
     
-    url = ui.get_user_input()
+    url = ui.get_user_input().strip()
     
     # do not delete next comment for easy testing!
     # https://www.wildberries.ru/seller/1158424
