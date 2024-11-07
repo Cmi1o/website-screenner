@@ -34,6 +34,8 @@ The following tools were used in this project:
 
 Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Python](https://www.python.org/downloads/release/python-3115/)(^3.10 < 3.12) installed.
 
+Also you need to create a new folder `assets` in the root of project
+
 ## :checkered_flag: Starting ##
 
 ```bash
@@ -56,6 +58,8 @@ $ poetry install --no-root
 
 # Run the project
 $ poetry run python ./src/main.py
+
+# All screenshots and docx files with them will be in the `assets` folder
 ```
 
 ## :memo: License ##

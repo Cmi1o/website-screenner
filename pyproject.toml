@@ -1,16 +1,12 @@
 [tool.poetry]
 package-mode = false
-name = "website-screener"
-version = "0.1.0"
-authors = ["Georgiy Vasin <georgijvasin01@gmail.com>"]
-readme = "README.md"
-license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.10"
 selenium = "^4.25.0"
 pyautogui = "^0.9.54"
 imagehash = "^4.3.1"
+python-docx = "^1.1.2"
 
 [build-system]
 requires = ["poetry-core"]
