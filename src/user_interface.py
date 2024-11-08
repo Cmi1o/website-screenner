@@ -2,7 +2,7 @@ import tkinter as tk
 
 
 class StartingUI:
-    def __init__(self):
+    def __init__(self) -> None:
         self.user_input = ''
         self.canceled = False
         
@@ -28,20 +28,20 @@ class StartingUI:
         
         self.root.mainloop()
     
-    def save_text(self):
+    def save_text(self) -> None:
         self.user_input = self.entry.get()
         self.root.destroy()
     
-    def get_user_input(self):
+    def get_user_input(self) -> str:
         return self.user_input
     
-    def cancel(self):
+    def cancel(self) -> None:
         self.canceled = True
         self.root.destroy()
 
 
 class ErrorUI:
-    def __init__(self, error_message):
+    def __init__(self, error_message: str):
         self.root = tk.Tk()
         # self.root.protocol('WM_DELETE_WINDOW', self.cancel)
         self.root.title('Ошибка')
