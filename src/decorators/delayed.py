@@ -14,7 +14,7 @@ class delayed:
     
     def __call__(self, func: Callable[_S, _R]) -> Callable[_S, _R]:
         @wraps(func)
-        def wrapper(*args, **kwargs) -> _R:
+        def wrapper(*args: _S.args, **kwargs: _S.kwargs) -> _R:
             result = func(*args, **kwargs)
             page_render_delay(self.delay)
             return result
