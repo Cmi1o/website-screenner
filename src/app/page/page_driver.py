@@ -14,27 +14,29 @@ class ScreenSizes(NamedTuple):
 class PageDriver:
     def __init__(self, driver: WebDriver) -> None:
         self.__driver = driver
-    
+
     def open_new_tab(self, url: str) -> None:
         body = self.__driver.find_element(By.TAG_NAME, 'body')
-        
+
         body.send_keys(Keys.CONTROL + 't')  # open new tab
         self.__driver.get(url)
-    
+
     def is_next_page_button_found(self) -> bool:
         try:
-            return bool(self.__driver.find_element(
-                By.LINK_TEXT, 'Следующая страница'  # if russian language
-            ))
+            return bool(
+                self.__driver.find_element(
+                    By.LINK_TEXT, 'Следующая страница'  # if russian language
+                )
+            )
         except NoSuchElementException:
             return False
-    
+
     @property
     def screen_sizes(self) -> ScreenSizes:
         return ScreenSizes(
             width=self.__driver.get_window_size()['width'],
-            height=self.__driver.get_window_size()['height']
+            height=self.__driver.get_window_size()['height'],
         )
-    
-    def scroll_down(self, step: float=515) -> None:
+
+    def scroll_down(self, step: float = 515) -> None:
         self.__driver.execute_script(f'window.scrollBy(0, {step})')

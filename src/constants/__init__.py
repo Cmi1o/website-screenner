@@ -1,2 +1,2 @@
-from .wb_page import *
 from .files import *
+from .wb_page import *
