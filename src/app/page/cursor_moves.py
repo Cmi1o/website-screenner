@@ -1,4 +1,4 @@
-import pyautogui as GU
+import pyautogui as GUI
 
 from decorators import delayed
 
@@ -7,23 +7,23 @@ class Cursor:
     @staticmethod
     @delayed()
     def accept_cookies(has_taskbar: bool = True) -> None:
-        y = GU.size().height * 0.9 if has_taskbar else GU.size().height * 0.925
+        y = GUI.size().height * 0.9 if has_taskbar else GUI.size().height * 0.925
 
-        GU.moveTo(
-            x=GU.size().width * 0.35,  # 0 coordinate is on the left
+        GUI.moveTo(
+            x=GUI.size().width * 0.35,  # 0 coordinate is on the left
             y=y,  # 0 coordinate is on the top
         )
-        GU.click()
+        GUI.click()
 
     @staticmethod
     def move_to_top() -> None:
-        GU.moveTo(x=GU.size().width // 2, y=0 + 1)
+        GUI.moveTo(x=GUI.size().width // 2, y=0 + 1)
 
     @staticmethod
     @delayed()
     def remove_automatic_software_banner() -> None:
-        GU.moveTo(x=GU.size().width - 34, y=GU.size().height * 0.13)
-        GU.click()
+        GUI.moveTo(x=GUI.size().width - 34, y=GUI.size().height * 0.13)
+        GUI.click()
 
 
 cursor = Cursor()
