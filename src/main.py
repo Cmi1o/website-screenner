@@ -6,7 +6,7 @@ import user_interface
 from app.driver_builder import options
 from app.page import PageDriver, cursor, page_render_delay
 from app.page.loading import prepare_page
-from files_interactions import FilesManager
+from files_managers import DocxManager
 from screenshots import screenshots_maker
 from urls import next_page_url
 
@@ -21,7 +21,7 @@ def main() -> None:
     # do not delete next comment for easy testing!
     # https://www.wildberries.ru/seller/1158424
 
-    files_manager = FilesManager(page_url=url)
+    files_manager = DocxManager(page_url=url)
 
     with webdriver.Chrome(options) as driver:
         driver.get(url)
