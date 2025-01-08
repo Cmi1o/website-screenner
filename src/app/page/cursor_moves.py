@@ -16,14 +16,16 @@ class Cursor:
         GUI.click()
 
     @staticmethod
-    def move_to_top() -> None:
-        GUI.moveTo(x=GUI.size().width // 2, y=0 + 1)
-
-    @staticmethod
     @delayed()
     def remove_automatic_software_banner() -> None:
         GUI.moveTo(x=GUI.size().width - 34, y=GUI.size().height * 0.13)
         GUI.click()
+
+    @staticmethod
+    def move_to_top() -> None:
+        GUI.moveTo(
+            x=GUI.size().width // 2, y=1  # y = 1 because 0 is the top of the screen
+        )
 
 
 cursor = Cursor()
