@@ -7,7 +7,7 @@ from app.driver_builder import options
 from app.page import PageDriver, cursor, page_render_delay
 from app.page.loading import prepare_page
 from files_managers import DocxManager
-from screenshots import screenshots_maker
+from screenshots import take_screenshot
 from urls import next_page_url
 
 
@@ -51,7 +51,7 @@ def main() -> None:
                 page_screens_count += 1
                 screens_count += 1
 
-                screenshots_maker.take_screenshot(url, screens_count)
+                take_screenshot(url, screens_count)
 
                 if not screens_count == 1:
                     if (
