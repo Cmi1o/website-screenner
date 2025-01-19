@@ -41,7 +41,7 @@ class StartingUI:
 
 
 class ErrorUI:
-    def __init__(self, error_message: str):
+    def __init__(self, error_message: str) -> None:
         self.root = tk.Tk()
         # self.root.protocol('WM_DELETE_WINDOW', self.cancel)
         self.root.title('Ошибка')
